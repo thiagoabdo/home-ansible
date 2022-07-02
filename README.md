@@ -9,3 +9,8 @@ Before using this I have:
 	- Created an unprivilledge user
 	- Installed openssh, zsh, gmrl-zsh, vim, git and python
 	- Configured internet access
+
+# Objectives (possible roles)
+- Configure K3S
+- Configure an github-runner in kubernetes
+
