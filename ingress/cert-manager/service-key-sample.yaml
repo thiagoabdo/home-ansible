@@ -1,0 +1,7 @@
+apiVersion: v1
+data:
+  key: FAKE
+kind: Secret
+metadata:
+  name: service-key
+  namespace: default
