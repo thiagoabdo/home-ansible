@@ -1,0 +1,35 @@
+authentik:
+    secret_key: "N+VtrBMqOiv1dglH/xiu9cI9NmK3LaQ+uenQl75CWkrESb9v"
+    # This sends anonymous usage-data, stack traces on errors and
+    # performance data to sentry.beryju.org, and is fully opt-in
+    error_reporting:
+        enabled: false
+    postgresql:
+        password: "ThisIsNotASecurePassword"
+
+ingress:
+    enabled: true
+    ingressClassName: nginx-public
+    hosts:
+        - host: authentik.abdothiago.ml
+          paths:
+              - path: "/"
+                pathType: Prefix
+    annotations:
+        cert-manager.io/issuer: selfsigned-cluster-issuer
+        cert-manager.io/issuer-kind: ClusterIssuer
+#        cert-manager.io/issuer-group: cert-manager.k8s.cloudflare.com
+    tls:
+    # specifying a host in the TLS section will tell cert-manager 
+    # what DNS SANs should be on the created certificate.
+    - hosts:
+        - authentik.abdothiago.ml
+      # cert-manager will create this secret
+      secretName: authentik-tls
+
+
+postgresql:
+    enabled: true
+    postgresqlPassword: "ThisIsNotASecurePassword"
+redis:
+    enabled: true
