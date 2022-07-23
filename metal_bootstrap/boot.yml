@@ -9,7 +9,7 @@
   roles:
     - wake
 
-# - name: Install k3s
-#   hosts: metal
-#   roles:
-#    - k3s
+- name: Install k3s
+  hosts: metal
+  roles:
+   - k3s
