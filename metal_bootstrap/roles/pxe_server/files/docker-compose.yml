@@ -5,8 +5,6 @@ services:
     build: ./dnsmasq
     volumes:
       - ./data/pxe-config/dnsmasq.conf:/etc/dnsmasq.conf
-      - ./data/pxe-config/grub.cfg:/tftp/grub.cfg
-      - ./data/os/EFI/BOOT/grubx64.efi:/tftp/grubx64.efi
       - ./data/pxe-config/ipxe.efi:/tftp/ipxe.efi
       - ./data/os/images/pxeboot/initrd.img:/tftp/initrd.img
       - ./data/os/images/pxeboot/vmlinuz:/tftp/vmlinuz
