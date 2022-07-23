@@ -1,0 +1,36 @@
+#!ipxe
+
+# set default boot timeout
+set boot_timeout 300000
+
+set rockylinux_mirror http://download.rockylinux.org
+set rockylinux_base_dir pub/rocky
+
+
+set cmdline inst.text
+
+isset ${dhcp-server} && set ipparam ip=dhcp || set ipparam ip=${ip}::${gateway}:${netmask}:::none nameserver=${dns}
+set ipparam BOOTIF=${netX/mac} ${ipparam}
+
+goto ${menu} ||
+
+:rockylinux
+set os Rocky Linux
+set os_arch x86_64
+
+set osversion 9 
+set dir ${rockylinux_base_dir}/${osversion}/BaseOS/${os_arch}/os
+set repo ${rockylinux_mirror}/${dir}
+
+# Local donwload of Stage2, kernel and initrd
+set olddir ${dir}
+set dir os
+set rockylinux_mirror http://{{ ansible_default_ipv4.address }}
+
+imgfree
+kernel ${rockylinux_mirror}/${dir}/images/pxeboot/vmlinuz inst.stage2=http://{{ ansible_default_ipv4.address }}/os ${ipparam} initrd=initrd.magic inst.ks=http://{{ ansible_default_ipv4.address }}/init-config/${netX/mac}.ks ${cmdline}
+initrd ${rockylinux_mirror}/${dir}/images/pxeboot/initrd.img
+boot
+
+clear menu
+exit 0

@@ -1,0 +1,6 @@
+ansible_user: root
+ansible_ssh_private_key_file: ~/.ssh/id_rsa
+ssh_public_keys: 
+  - "{{ lookup('file', '~/.ssh/id_rsa.pub') }}"
+  - "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDQ2qXFRDg8rA9yV22pC/D6wdxAjkyqfHgwRIbFC8bhdBPd33vGOjuQ7l8DuKO+jZvKtkliRbmeOtzUxj7gL/naj095dju+eL+gZI+8FV9JpJ+9TcC7vpmrcaF/QxVJMxh4+APIlpnw5COaHjbcAesU1i7t/sch+kM5BLCNmHKG1nDjez6cZxal/jjtBWQEtceE5n8dH0kg0HriiGzznyy1eWw0+8k02ATQo2COrNsrSLrc3I0vILsE38QcC3+TfsqGlMSc3H+UgdRlGJ1m9JnbejuaB2x8/MYH6NAi9i4uz+CwKQ+Zwdanlx7ihBTRWiTnxZINqLZCp6RJumxTn/6AZX4gHBCQRvTJ4GC6M1GGXxpWZua3IPDLsK/W56zfVy6Dmbol4SET5ELyjE4YUVhopf/B0bQX5nLaTaQvrF9boGLRbQHi6phHlhU6TzJHz7DvD1ohx/5B/k6xxdu+EEi6NlVZ+9pgKUvfTGCmIjlZqRATpuODAjPptNkTw4+aoonVEiHm4GQwabUHBcyu8Ao17h0OmMZudTAeEGzTfBHSfqYLVXtqcP0yiroC8TXWT5T2vHlyN50y5C+qgFLEZIroyx98jAWmG3CwEcmB+91vDXqFd4Qg732Brw/Q3STtHRZh1zRsCDhOw25IN0uoQjMnDQXrD48Ldz3piTlwBvU6rQ== tjota@Scarlet"
+dns_server: "8.8.8.8"

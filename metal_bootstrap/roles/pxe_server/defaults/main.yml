@@ -1,0 +1,6 @@
+iso_url: "https://download.rockylinux.org/pub/rocky/9/isos/x86_64/Rocky-9.0-x86_64-minimal.iso"
+iso_checksum: "sha256:dbe7ee3000baa22ebfc7d66611597081c6b3e792a8c0c86a5a9d58e14650d874"
+
+ipxe_url: "https://boot.ipxe.org/ipxe.efi"
+
+timezone: America/Sao_Paulo

@@ -1,0 +1,15 @@
+- name: Start PXE server
+  hosts: localhost
+  roles:
+    - pxe_server
+
+- name: Provision bare metal machines
+  hosts: metal
+  gather_facts: false
+  roles:
+    - wake
+
+# - name: Install k3s
+#   hosts: metal
+#   roles:
+#    - k3s

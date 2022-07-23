@@ -1,0 +1,70 @@
+#version=RHEL8
+
+# Do not use graphical install
+text
+
+# Keyboard layouts
+keyboard --xlayouts='us'
+# System language
+lang en_US.UTF-8
+
+
+# Partition clearing information
+clearpart --all --drives={{ hostvars[item]['disk'] }}
+# Partitioning
+ignoredisk --only-use={{ hostvars[item]['disk'] }}
+part /boot --size 512 --asprimary --fstype=ext4 --ondrive={{ hostvars[item]['disk'] }}
+partition /boot/efi --fstype=vfat --size=512 --ondrive={{ hostvars[item]['disk'] }}
+part pv.1 --size 1 --grow --fstype=ext4 --ondrive={{ hostvars[item]['disk'] }}
+volgroup system --pesize=32768 pv.1
+logvol / --fstype ext4 --vgname system --size=20480 --name=root
+logvol /data --fstype ext4 --vgname system --size=51200 --name=data
+
+# bootloader --timeout=1 --location=mbr --append="console=ttyS0 console=ttyS0,115200n8 no_timer_check crashkernel=auto net.ifnames=0"
+
+# Network information
+network --bootproto=static --device={{ hostvars[item]['network_interface'] }} --ip={{ hostvars[item]['ansible_host'] }} --gateway={{ ansible_default_ipv4.gateway }} --nameserver={{ dns_server }} --netmask={{ ansible_default_ipv4.netmask }} --ipv6=auto --hostname={{ hostvars[item]['inventory_hostname'] }} --activate
+
+# Use network installation
+url --url="http://{{ ansible_default_ipv4.address }}/os"
+
+# Disable Setup Agent on first boot
+firstboot --disable
+# Do not configure the X Window System
+skipx
+# Enable NTP
+services --enabled="chronyd"
+# System timezone
+timezone {{ timezone }} --utc
+
+# Create user (locked by default)
+user --groups=wheel --name=admin
+# Add SSH key
+{%- for key in ssh_public_keys %}
+
+sshkey --username=root "{{ key }}"
+{% endfor %}
+# Disable root password login
+rootpw --lock
+
+# Disable SELinux
+selinux --disabled
+
+# Disable firewall
+firewall --disabled
+
+%packages
+@core
+iscsi-initiator-utils
+grub2-pc
+grub2-efi-x64
+grub2-efi
+efi-filesystem
+efivar-libs
+efibootmgr
+%end
+
+# Enable iSCSI for Kubernetes storage
+services --enable=iscsid
+
+reboot

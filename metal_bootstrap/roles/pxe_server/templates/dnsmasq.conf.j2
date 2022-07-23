@@ -1,0 +1,17 @@
+# Disable DNS Server.
+port=0
+
+# We're DHCP proxying on the network of the homelab host
+dhcp-range={{ ansible_default_ipv4.address }},proxy
+dhcp-userclass=set:ENU,iPXE
+pxe-service=tag:!ENU,X86-64_EFI, "Boot From Network, (UEFI)", ipxe.efi
+dhcp-boot=tag:ENU,http://{{ ansible_default_ipv4.address }}/init-config/boot.ipxe,,0.0.0.1
+
+# Log DHCP queries to stdout
+log-queries
+log-dhcp
+log-facility=-
+
+# Enable TFTP server
+enable-tftp
+tftp-root=/tftp
