@@ -1,0 +1,16 @@
+- name: Bootstrap external secrets
+  hosts: metal
+  gather_facts: false
+  tasks:
+    - name: Render terraform's config file
+      ansible.builtin.template:
+        src: ./terraform.tfvars.j2
+        dest: ./terraform.tfvars
+      delegate_to: localhost
+      run_once: true
+    - name: Render terraform's providers file
+      ansible.builtin.template:
+        src: ./providers.tf.j2
+        dest: ./providers.tf
+      delegate_to: localhost
+      run_once: true
