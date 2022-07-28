@@ -1,0 +1,17 @@
+metal:
+  children:
+    masters:
+      hosts:
+        metal0: {ansible_host: 10.0.0.2, mac: '00:23:24:d1:69:69', disk: sda, network_interface: enp2s0}
+    workers:
+      hosts:
+        metal3: {ansible_host: 10.0.0.4, mac: '00:23:24:d1:f5:69', disk: sda, network_interface: eno1}
+  vars:
+    k3s_token: REDACTED
+    cloudflare_email: REDACTED
+    cloudflare_account_id: REDACTED
+    cloudflare_api_key: REDACTED
+    terraform_cloud_org: REDACTED
+    terraform_cloud_namespace: REDACTED
+    cluster_domainname: REDACTED
+    freenomdomain: true
