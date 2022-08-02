@@ -1,0 +1,62 @@
+argo-cd:
+  ## ArgoCD configuration
+  ## Ref: https://github.com/argoproj/argo-cd
+  ##
+  ## Server
+  server:
+    ## ArgoCD config
+    ## reference https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/argocd-cm.yaml    repositories: |
+
+    configEnabled: true
+    additionalApplications: 
+      - name: argocd
+        namespace: argocd
+        destination:
+          namespace: argocd
+          server: https://kubernetes.default.svc
+        project: default
+        source:
+          helm:
+            version: v3
+            valueFiles:
+            - values.yaml
+          path: bootstrap/argocd
+          repoURL: https://github.com/thiagoabdo/home-ansible.git
+          targetRevision: HEAD
+        syncPolicy:
+          syncOptions:
+          - CreateNamespace=true
+      - name: argocd-apps
+        namespace: argocd
+        destination:
+          namespace: argocd
+          server: https://kubernetes.default.svc
+        project: default
+        source:
+          path: argocd-apps
+          repoURL: https://github.com/thiagoabdo/home-ansible.git
+          targetRevision: HEAD
+          directory:
+            recurse: true
+            jsonnet: {}
+        syncPolicy:
+          automated:
+            selfHeal: true
+            prune: true
+      - name: argocd-appprojects
+        namespace: argocd
+        destination:
+          namespace: argocd
+          server: https://kubernetes.default.svc
+        project: default
+        source:
+          path: argocd-appprojects
+          repoURL: https://github.com/thiagoabdo/home-ansible.git
+          targetRevision: HEAD
+          directory:
+            recurse: true
+            jsonnet: {}
+        syncPolicy:
+          automated:
+            selfHeal: true
+            prune: true
