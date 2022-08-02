@@ -39,6 +39,8 @@ argo-cd:
           directory:
             recurse: true
             jsonnet: {}
+        finalizers:
+          - resources-finalizer.argocd.argoproj.io
         syncPolicy:
           automated:
             selfHeal: true
@@ -56,6 +58,8 @@ argo-cd:
           directory:
             recurse: true
             jsonnet: {}
+        finalizers:
+          - resources-finalizer.argocd.argoproj.io
         syncPolicy:
           automated:
             selfHeal: true
