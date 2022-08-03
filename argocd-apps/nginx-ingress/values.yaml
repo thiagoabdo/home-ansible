@@ -1,0 +1,35 @@
+ingress-nginx:
+  controller:
+    admissionWebhooks:
+      timeoutSeconds: 30
+    metrics:
+      enabled: true
+      serviceMonitor:
+        enabled: true
+    ingressClassResource:
+      # -- Name of the ingressClass
+      name: nginx-public
+      # -- Is this ingressClass enabled or not
+      enabled: true
+      # -- Is this the default ingressClass for the cluster
+      default: false
+
+    # -- For backwards compatibility with ingress.class annotation, use ingressClass.
+    # Algorithm is as follows, first ingressClassName is considered, if not present, controller looks for ingress.class annotation
+    ingressClass: nginx-public
+
+    resources:
+    ##  limits:
+    ##    cpu: 100m
+    ##    memory: 90Mi
+      requests:
+        cpu: 100m
+        memory: 200Mi
+
+    # Mutually exclusive with keda autoscaling
+    autoscaling:
+      enabled: false
+      minReplicas: 1
+      maxReplicas: 5
+      targetCPUUtilizationPercentage: 50
+      targetMemoryUtilizationPercentage: 50
