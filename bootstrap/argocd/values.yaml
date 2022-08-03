@@ -37,7 +37,7 @@ argo-cd:
           repoURL: https://github.com/thiagoabdo/home-ansible.git
           targetRevision: HEAD
           directory:
-            recurse: true
+            recurse: false
             jsonnet: {}
         finalizers:
           - resources-finalizer.argocd.argoproj.io
@@ -56,7 +56,7 @@ argo-cd:
           repoURL: https://github.com/thiagoabdo/home-ansible.git
           targetRevision: HEAD
           directory:
-            recurse: true
+            recurse: false
             jsonnet: {}
         finalizers:
           - resources-finalizer.argocd.argoproj.io
