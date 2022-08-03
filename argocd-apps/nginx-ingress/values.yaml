@@ -1,11 +1,11 @@
 ingress-nginx:
   controller:
-    admissionWebhooks:
-      timeoutSeconds: 30
-    metrics:
-      enabled: true
-      serviceMonitor:
-        enabled: true
+#    admissionWebhooks:
+#      timeoutSeconds: 30
+#    metrics:
+#      enabled: true
+#      serviceMonitor:
+#        enabled: true
     ingressClassResource:
       # -- Name of the ingressClass
       name: nginx-public
