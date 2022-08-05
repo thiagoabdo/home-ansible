@@ -6,7 +6,8 @@ argo-cd:
   server:
     ## ArgoCD config
     ## reference https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/argocd-cm.yaml    repositories: |
-
+    extraArgs:
+      - --insecure
     configEnabled: true
     additionalApplications: 
       - name: argocd
@@ -58,3 +59,5 @@ argo-cd:
           automated:
             selfHeal: true
             prune: true
+  dex:
+    enabled: false
