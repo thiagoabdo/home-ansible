@@ -12,6 +12,25 @@ home-assistant:
             - path: /
       ingressClassName: nginx-public
   
+  persistence:
+    config:
+      enabled: true
+  
+  addons:
+    # -- Enable and configure codeserver for the chart.
+    #    This allows for easy access to configuration.yaml
+    # @default -- See values.yaml
+    codeserver:
+      enabled: true
+      args:
+        - --auth
+        - none
+        - --user-data-dir
+        - /data/config/.vscode
+      volumeMounts:
+      - name: config
+        mountPath: /data/config
+
   postgresql:
     enabled: true
     global:
