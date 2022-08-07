@@ -4,17 +4,16 @@ home-assistant:
   env:
     TZ: GMT-3
   ingress:
-    main:
-      enable: true
+    primary:
+      enabled: true
       hosts:
         - host: homeassistant.abdothiago.ml
           paths:
             - /
-      annotations:
-        kubernetes.io/ingress.class: nginx-public
+      ingressClassName: nginx-public
   
   postgresql:
-    enable: true
+    enabled: true
     global:
       postgresql:
         ## @param global.postgresql.auth.postgresPassword Password for the "postgres" admin user (overrides `auth.postgresPassword`)
