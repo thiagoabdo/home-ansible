@@ -1,0 +1,35 @@
+home-assistant:
+  image:
+    tag: latest
+  env:
+    TZ: GMT-3
+  ingress:
+    main:
+      enable: true
+      hosts:
+        - host: homeassistant.abdothiago.ml
+          paths:
+            - /
+      annotations:
+        kubernetes.io/ingress.class: nginx-public
+  
+  postgresql:
+    enable: true
+    global:
+      postgresql:
+        ## @param global.postgresql.auth.postgresPassword Password for the "postgres" admin user (overrides `auth.postgresPassword`)
+        ## @param global.postgresql.auth.username Name for a custom user to create (overrides `auth.username`)
+        ## @param global.postgresql.auth.password Password for the custom user to create (overrides `auth.password`)
+        ## @param global.postgresql.auth.database Name for a custom database to create (overrides `auth.database`)
+        ## @param global.postgresql.auth.existingSecret Name of existing secret to use for PostgreSQL credentials (overrides `auth.existingSecret`).
+        ## @param global.postgresql.auth.secretKeys.adminPasswordKey Name of key in existing secret to use for PostgreSQL credentials (overrides `auth.secretKeys.adminPasswordKey`). Only used when `global.postgresql.auth.existingSecret` is set.
+        ## @param global.postgresql.auth.secretKeys.userPasswordKey Name of key in existing secret to use for PostgreSQL credentials (overrides `auth.secretKeys.userPasswordKey`). Only used when `global.postgresql.auth.existingSecret` is set.
+        ## @param global.postgresql.auth.secretKeys.replicationPasswordKey Name of key in existing secret to use for PostgreSQL credentials (overrides `auth.secretKeys.replicationPasswordKey`). Only used when `global.postgresql.auth.existingSecret` is set.
+        ##
+        auth:
+          existingSecret: database-password
+          secretKeys:
+            adminPasswordKey: admin-password
+            userPasswordKey: user-password
+            replicationPasswordKey: replication-password
+    
