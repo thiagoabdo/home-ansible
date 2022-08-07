@@ -2,7 +2,7 @@ home-assistant:
   image:
     tag: latest
   env:
-    TZ: GMT-3
+    TZ: "America/Sao Paulo"
   ingress:
     main:
       enabled: true
@@ -50,4 +50,8 @@ home-assistant:
             adminPasswordKey: admin-password
             userPasswordKey: user-password
             replicationPasswordKey: replication-password
+
+mosquitto:
+  env:
+    TZ: "America/Sao Paulo"
     
