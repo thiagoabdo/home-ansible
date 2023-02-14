@@ -1,7 +1,7 @@
 home-assistant:
   image:
     repository: ghcr.io/home-assistant/home-assistant
-    tag: 2023.2.2
+    tag: 2023.2.4
   env:
     TZ: "GMT-3"
   ingress:
