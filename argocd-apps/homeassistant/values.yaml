@@ -53,11 +53,15 @@ home-assistant:
             replicationPasswordKey: replication-password
 
 mosquitto:
+  image:
+    repository: eclipse-mosquitto
+    tag: 2.0.14
   env:
     TZ: "GMT-3"
 
 zigbee2mqtt:
   image:
+    repository: koenkk/zigbee2mqtt
     tag: 1.30.0
   env:
     TZ: "GMT-3"
