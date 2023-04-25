@@ -62,7 +62,7 @@ mosquitto:
 esphome:
   image:
     repository: esphome/esphome
-    tag: 2023.4
+    tag: "2023.4"
   env:
     TZ: "GMT-3"
 
