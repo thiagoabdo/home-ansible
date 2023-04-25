@@ -60,6 +60,7 @@ mosquitto:
     TZ: "GMT-3"
 
 esphome:
+  hostNetwork: true
   image:
     repository: esphome/esphome
     tag: "2023.4"
