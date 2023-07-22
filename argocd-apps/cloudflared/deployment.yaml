@@ -91,7 +91,7 @@ data:
     # E.g. `cloudflared tunnel route dns example-tunnel tunnel.example.com`.
     ingress:
     # The first rule proxies traffic to the httpbin sample Service defined in app.yaml
-    - hostname: '*.thiagolab.comboio.party'
+    - hostname: '*.comboio.party'
       service: https://nginx-ingress-ingress-nginx-controller.nginx-ingress
       originRequest:
         noTLSVerify: true
