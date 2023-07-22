@@ -9,7 +9,7 @@ home-assistant:
     main:
       enabled: true
       hosts:
-        - host: homeassistant.thiagolab.comboio.party
+        - host: homeassistant.comboio.party
           paths:
             - path: /
       ingressClassName: nginx-public
