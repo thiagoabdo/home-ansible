@@ -1,0 +1,16 @@
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  creationTimestamp: null
+  name: api
+  namespace: cert-manager
+spec:
+  encryptedData:
+    CF_API_TOKEN: AgCVXrKesISUBQ+uMUvk2y6Fs3vFOAxHOlRBAkf/nnPEFmD7o00gAr0KoHW/3o9rfzX+LiL0xCdWohO/Cq9nYDCWQ1VWT3Kou81CXy+7TGfDSaue0B9hDYBWg6ZzWbEF4uqaei7d/NMjy1BF6tzfWGuqPgrfYDx7pBHtn6eosd+ILMmwlXef6QWegTq//12ZGNXuS7u5gE3e6SFz64uO41X+lkPLr+sXovmajz4fJI+4OLtA12TH3XBAb2lbxQ4saWiZYBY58uM2vjm9EQnmFsV5Ns4YV1fn9oFbslRGmhzgjjOvnHwqf65DO/Hu8xXr8XqKlK5Ia5hVfaubIR8imNyiY/UujjhlJazvi8tM+5UdoZlwGjnaOb1rppFu99K/jPpECNxalpHOwbhUp8FmjKmHRds1qfOfiKZHKXz+ktvKT76N3nMSSqVQ/qBklNPpiV5JpZz9DHUtgM5VxGurcHMFAEd/Tsj45uxXZ7L4meQX6lbnGx9MAtZ+x7F5xnLarzQ4e2lJVoBIN1xQJyaV5hD3+QJhq2dpgsBMPqbF+0fAsZxKVB7BxtS4Yw/ifHRhsyrHxo1W2VuQsSZKwnkFqbdbAkH0nQoaKfFtPwdgeW52VUr9q2uA1gpoBm34sM9DbO+tl9niA/iItATZAl4j18xU3wT5Kuhh/1ETuWalyhh35Kgf8BtvowWLEJwHxaWbxgzSr4B+s8Oz7IuyayCFZXXEI0SjzlFclSHnjErnux/8DyBhFo7RXd8J
+  template:
+    metadata:
+      creationTimestamp: null
+      name: api
+      namespace: cert-manager
+    type: Opaque
+
