@@ -24,13 +24,8 @@ spec:
           - --provider=cloudflare
           - --cloudflare-dns-records-per-page=5000 # (optional) configure how many DNS records to fetch per request
         env:
-        - name: CF_API_KEY
+        - name: CF_API_TOKEN
           valueFrom:
             secretKeyRef:
               name: api
-              key: CF_API_KEY
-        - name: CF_API_EMAIL
-          valueFrom:
-            secretKeyRef:
-              name: api
-              key: CF_API_EMAIL
+              key: CF_API_TOKEN
