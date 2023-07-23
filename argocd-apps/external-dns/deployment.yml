@@ -19,7 +19,8 @@ spec:
       - name: external-dns
         image: registry.k8s.io/external-dns/external-dns:v0.13.5
         args:
-          - --source=service # ingress is also possible
+          - --source=ingress # ingress is also possible
+          - --zone-id-filter=f1b4777ef623716324f9af14b408863a
           - --domain-filter=int.comboio.party # (optional) limit to only example.com domains; change to match the zone created above.
           - --provider=cloudflare
           - --cloudflare-dns-records-per-page=5000 # (optional) configure how many DNS records to fetch per request
