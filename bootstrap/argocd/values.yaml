@@ -9,6 +9,21 @@ argo-cd:
     extraArgs:
       - --insecure
     configEnabled: true
+    ingress:
+      enabled: true
+      annotations:
+        cert-manager.io/cluster-issuer: letsencrypt-http
+      ingressClassName: nginx-public
+      hosts:
+        - argo.int.comboio.party
+      paths:
+        - /
+      pathType: Prefix
+      tls:
+        - secretName: argocd-tls
+          hosts:
+            - argo.int.comboio.party
+    # This is deprecated, need to move it to the new argo-cd applications....
     additionalApplications: 
       - name: argocd
         namespace: argocd
