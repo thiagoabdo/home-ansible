@@ -1,0 +1,4 @@
+gitlab-runner:
+  gitlabUrl: https://gitlab.com
+  runners:
+    secret: lera-runner-gitlab-runner
