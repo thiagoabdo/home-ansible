@@ -1,0 +1,7 @@
+apiVersion: v2
+name: lera
+version: 0.0.0
+dependencies:
+  - name: gitlab-runner
+    version: v0.55.0
+    repository: https://charts.gitlab.io
