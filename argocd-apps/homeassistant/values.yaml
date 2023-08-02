@@ -41,7 +41,7 @@ home-assistant:
         hosts:
           - host: hacode.int.comboio.party
             paths:
-              - /
+              - path: /
         annotations:
           kubernetes.io/ingress.class: nginx-public
           cert-manager.io/cluster-issuer: letsencrypt-dns
@@ -97,7 +97,7 @@ esphome:
       hosts:
         - host: esphome.int.comboio.party
           paths:
-            - /
+            - path: /
       annotations:
         kubernetes.io/ingress.class: nginx-public
         cert-manager.io/cluster-issuer: letsencrypt-dns
@@ -193,7 +193,7 @@ zigbee2mqtt:
       hosts:
         - host: zigbee.int.comboio.party
           paths:
-            - /
+            - path: /
       annotations:
         kubernetes.io/ingress.class: nginx-public
         cert-manager.io/cluster-issuer: letsencrypt-dns
