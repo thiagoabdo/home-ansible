@@ -1,4 +1,6 @@
 gitlab-runner:
+  rbac:
+    create: true
   gitlabUrl: https://gitlab.com
   runners:
     secret: lera-runner-gitlab-runner
