@@ -76,8 +76,8 @@ mosquitto:
 esphome:
   hostNetwork: true
   image:
-    repository: esphome/esphome
-    tag: "2023.7"
+    repository: ghcr.io/libretiny-eu/libretiny-esphome-docker
+    tag: "2023.9.0-dev"
   env:
     TZ: "GMT-3"
   persistence:
