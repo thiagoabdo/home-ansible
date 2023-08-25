@@ -86,7 +86,7 @@ esphome:
       mountPath: /config
       type: pvc
       accessMode: ReadWriteOnce
-      size: 1Gi
+      size: 5Gi
   ingress:
     main:
       enabled: true
