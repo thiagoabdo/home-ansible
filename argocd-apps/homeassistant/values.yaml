@@ -2,7 +2,7 @@ home-assistant:
   hostNetwork: true
   image:
     repository: ghcr.io/home-assistant/home-assistant
-    tag: 2023.11.1
+    tag: 2023.11.2
   env:
     TZ: "GMT-3"
   ingress:
