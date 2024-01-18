@@ -4,3 +4,12 @@ gitlab-runner:
   gitlabUrl: https://gitlab.com
   runners:
     secret: lera-runner-gitlab-runner
+    config: |
+      [[runners]]
+        [runners.kubernetes]
+          ## Specify one or more imagePullSecrets
+          ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/
+          ##
+          image_pull_secrets = gitlab-registry-pull-secrets
+# This pull secrets was manually created, I should have used kubeseal secrets but I did not
+# that will break in the future, but hopefully it will be someone else problem
