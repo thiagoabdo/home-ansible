@@ -77,7 +77,7 @@ esphome:
   hostNetwork: true
   image:
     repository: esphome/esphome
-    tag: "2023.12.5"
+    tag: "2023.12.9"
   env:
     TZ: "GMT-3"
   persistence:
