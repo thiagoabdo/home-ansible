@@ -12,7 +12,7 @@ variable "cloudflare_account_id" {
 }
 
 variable "freenomdomain" {
-  type = bool
+  type    = bool
   default = false
 }
 

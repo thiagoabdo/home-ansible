@@ -72,7 +72,7 @@ resource "kubernetes_secret" "cloudflared_credentials" {
 
 resource "cloudflare_api_token" "external_dns" {
   count = var.freenomdomain ? 0 : 1
-  name = "homelab_external_dns"
+  name  = "homelab_external_dns"
 
   policy {
     permission_groups = [
@@ -105,7 +105,7 @@ resource "kubernetes_secret" "external_dns_token" {
 
 resource "cloudflare_api_token" "cert_manager" {
   count = var.freenomdomain ? 0 : 1
-  name = "homelab_cert_manager"
+  name  = "homelab_cert_manager"
 
   policy {
     permission_groups = [

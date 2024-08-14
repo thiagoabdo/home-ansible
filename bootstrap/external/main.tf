@@ -5,5 +5,5 @@ module "cloudflare" {
   cloudflare_api_key    = var.cloudflare_api_key
 
   cluster_domainname = var.cluster_domainname
-  freenomdomain = var.freenomdomain
+  freenomdomain      = var.freenomdomain
 }
