@@ -1,4 +1,6 @@
 longhorn:
+  helmPreUpgradeCheckerJob:
+    enabled: false
   defaultSettings:
     nodeDownPodDeletionPolicy: delete-both-statefulset-and-deployment-pod
   persistence:
