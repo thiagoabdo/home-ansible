@@ -3,76 +3,75 @@ argo-cd:
   ## Ref: https://github.com/argoproj/argo-cd
   ##
   ## Server
+  global:
+    domain: argo.int.comboio.party
+
+  configs:
+    params:
+      server.insecure: true
   server:
     ## ArgoCD config
     ## reference https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/argocd-cm.yaml    repositories: |
-    extraArgs:
-      - --insecure
     configEnabled: true
     ingress:
       enabled: true
       annotations:
         cert-manager.io/cluster-issuer: letsencrypt-dns
       ingressClassName: nginx-public
-      hosts:
-        - argo.int.comboio.party
-      paths:
-        - /
-      pathType: Prefix
-      tls:
+      extraTls:
         - secretName: argocd-tls
           hosts:
             - argo.int.comboio.party
     # This is deprecated, need to move it to the new argo-cd applications....
-    additionalApplications: 
-      - name: argocd
-        namespace: argocd
-        destination:
-          namespace: argocd
-          server: https://kubernetes.default.svc
-        project: default
-        source:
-          helm:
-            version: v3
-            valueFiles:
-            - values.yaml
-          path: bootstrap/argocd
-          repoURL: https://github.com/thiagoabdo/home-ansible.git
-          targetRevision: HEAD
-        syncPolicy:
-          syncOptions:
-          - CreateNamespace=true
-      - name: argocd-apps
-        namespace: argocd
-        destination:
-          namespace: argocd
-          server: https://kubernetes.default.svc
-        project: default
-        source:
-          path: argocd-apps
-          repoURL: https://github.com/thiagoabdo/home-ansible.git
-          targetRevision: HEAD
-        finalizers:
-          - resources-finalizer.argocd.argoproj.io
-        syncPolicy:
-          automated:
-            selfHeal: true
-            prune: true
-      - name: argocd-appprojects
-        namespace: argocd
-        destination:
-          namespace: argocd
-          server: https://kubernetes.default.svc
-        project: default
-        source:
-          path: argocd-appprojects
-          repoURL: https://github.com/thiagoabdo/home-ansible.git
-          targetRevision: HEAD
-        finalizers:
-          - resources-finalizer.argocd.argoproj.io
-        syncPolicy:
-          automated:
-            selfHeal: true
-            prune: true
+    # additionalApplications: 
+    #   - name: argocd
+    #     namespace: argocd
+    #     destination:
+    #       namespace: argocd
+    #       server: https://kubernetes.default.svc
+    #     project: default
+    #     source:
+    #       helm:
+    #         version: v3
+    #         valueFiles:
+    #         - values.yaml
+    #       path: bootstrap/argocd
+    #       repoURL: https://github.com/thiagoabdo/home-ansible.git
+    #       targetRevision: HEAD
+    #     syncPolicy:
+    #       syncOptions:
+    #       - CreateNamespace=true
+    #   - name: argocd-apps
+    #     namespace: argocd
+    #     destination:
+    #       namespace: argocd
+    #       server: https://kubernetes.default.svc
+    #     project: default
+    #     source:
+    #       path: argocd-apps
+    #       repoURL: https://github.com/thiagoabdo/home-ansible.git
+    #       targetRevision: HEAD
+    #     finalizers:
+    #       - resources-finalizer.argocd.argoproj.io
+    #     syncPolicy:
+    #       automated:
+    #         selfHeal: true
+    #         prune: true
+    #   - name: argocd-appprojects
+    #     namespace: argocd
+    #     destination:
+    #       namespace: argocd
+    #       server: https://kubernetes.default.svc
+    #     project: default
+    #     source:
+    #       path: argocd-appprojects
+    #       repoURL: https://github.com/thiagoabdo/home-ansible.git
+    #       targetRevision: HEAD
+    #     finalizers:
+    #       - resources-finalizer.argocd.argoproj.io
+    #     syncPolicy:
+    #       automated:
+    #         selfHeal: true
+    #         prune: true
   dex:
     enabled: false
