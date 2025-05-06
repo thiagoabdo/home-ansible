@@ -22,11 +22,6 @@
       "automerge": true
     },
     {
-      "description": "Automerge disabled for relatively unsafe components",
-      "matchPackageNames": ["longhorn", "metallb", "sealed-secrets", "argo-cd"],
-      "automerge": false
-    },
-    {
       "description": "Automerge minor and patch for argo-cd helm",
       "matchPackageNames": ["argo-cd"],
       "matchUpdateTypes": ["minor", "patch"],
