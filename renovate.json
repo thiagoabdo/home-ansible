@@ -2,5 +2,29 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
     "config:base"
+  ],
+  "packageRules": [
+    {
+      "description": "Disable major Terraform module updates",
+      "matchDatasources": ["terraform-provider"],
+      "matchUpdateTypes": ["major"],
+      "enabled": false
+    },
+    {
+      "description": "Automerge minor & patch Terraform module updates",
+      "matchDatasources": ["terraform-provider"],
+      "matchUpdateTypes": ["minor", "patch"],
+      "automerge": true
+    },
+    {
+      "description": "Automerge safe components",
+      "matchPackageNames": ["alpine", "nginx", "ghcr.io/home-assistant/home-assistant", "eclipse-mosquitto", "esphome/esphome", "koenkk/zigbee2mqtt", "cert-manager", "ingress-nginx", "cloudflare", "http", "kubernetes"],
+      "automerge": true
+    },
+    {
+      "description": "Automerge disabled for relatively unsafe components",
+      "matchPackageNames": ["longhorn", "metallb", "sealed-secrets", "argo-cd", "argo-cd"],
+      "automerge": false
+    }
   ]
 }
