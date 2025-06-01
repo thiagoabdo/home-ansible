@@ -105,7 +105,7 @@ esphome:
 zigbee2mqtt:
   image:
     repository: koenkk/zigbee2mqtt
-    tag: 1.42.0
+    tag: 2.4.0
   env:
     TZ: "GMT-3"
 
